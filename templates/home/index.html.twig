@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fondation SCP{% endblock %}
+
+{% block styles %}
+    <style>
+        .card {
+            width: 100%;
+            margin-bottom: 20px;}
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <header class="text-center mb-5">
+            <h1 class="display-4">Fondation SCP</h1>
+            <p class="lead">Protéger. Contenir. Préserver.</p>
+        </header>
+
+        <nav class="mb-4">
+            <ul class="nav nav-tabs justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">SCP Series</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Guides & Essais</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Bibliothèque</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="mb-5">
+            <h2 class="text-center mb-4">Rapport récent</h2>
+                {% for scp_report in scp_reports %}
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ scp_report.title }}</h5>
+                            <small class="text-muted">Publié par {{ scp_report.author.firstName }} {{ scp_report.author.lastname }} le {{ scp_report.publicationDate|date('d/m/Y à H:i') }}</small>
+                            <p class="mt-2 card-text">{{ scp_report.scpNumber }}</p>
+                            <p class="card-text">{{ scp_report.content|slice(0, 150) }}...</p>
+                            <a href="{{ path('article_show', {'id': scp_report.id}) }}" class="stretched-link"></a>
+                        </div>
+                    </div>
+                {% endfor %}
+        </section>
+
+
+
+        <footer class="text-center mt-5">
+            <p>© Fondation SCP</p>
+        </footer>
+    </div>
+{% endblock %}

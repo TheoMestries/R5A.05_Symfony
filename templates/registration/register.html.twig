@@ -3,17 +3,42 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card border-dark mb-3">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h3>Fondation SCP</h3>
+                        <p>Protéger. Contenir. Préserver.</p>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="text-center mb-4">Inscription</h4>
 
-    {{ form_errors(registrationForm) }}
+                        {{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                        {{ form_start(registrationForm, {'attr': {'class': 'form-horizontal'}}) }}
+                        <div class="form-group">
+                            {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'form-control-label'}}) }}
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                        <div class="form-group">
+                            {{ form_label(registrationForm.plainPassword, 'Password', {'label_attr': {'class': 'form-control-label'}}) }}
+                            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_widget(registrationForm.agreeTerms) }}
+                            {{ form_label(registrationForm.agreeTerms, 'I agree to the terms of service', {'label_attr': {'class': 'form-check-label'}}) }}
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-dark">S'inscrire</button>
+                        </div>
+                        {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

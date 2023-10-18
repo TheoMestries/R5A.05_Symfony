@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un article{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .form-horizontal .form-control {
+            font-family: "Courier New", Courier, monospace;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Rapport Scientifique SCP</h2>
+        <div class="border p-5 bg-light shadow">
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+            <div class="form-group">
+                {{ form_label(form.title, 'Titre', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Titre de l\'article'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.scpNumber, 'Numéro SCP', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                {{ form_widget(form.scpNumber, {'attr': {'class': 'form-control', 'placeholder': 'SCP-XXX'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.content, 'Contenu', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                {{ form_widget(form.content, {'attr': {'class': 'form-control', 'rows': '10', 'placeholder': 'Détails du rapport...'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.status, 'Statut', {'label_attr': {'class': 'font-weight-bold'}}) }}
+                {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <button type="submit" class="btn btn-dark">Publier le rapport</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

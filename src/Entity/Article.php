@@ -45,7 +45,6 @@ class Article
     public function setTitle(string $title): static
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -57,7 +56,6 @@ class Article
     public function setContent(string $content): static
     {
         $this->content = $content;
-
         return $this;
     }
 
@@ -69,7 +67,6 @@ class Article
     public function setPublicationDate(\DateTimeInterface $publicationDate): static
     {
         $this->publicationDate = $publicationDate;
-
         return $this;
     }
 
@@ -81,7 +78,6 @@ class Article
     public function setScpNumber(string $scpNumber): static
     {
         $this->scpNumber = $scpNumber;
-
         return $this;
     }
 
@@ -93,7 +89,6 @@ class Article
     public function setStatus(string $status): static
     {
         $this->status = $status;
-
         return $this;
     }
 
@@ -105,7 +100,11 @@ class Article
     public function setAuthor(?User $author): static
     {
         $this->author = $author;
-
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;  // or any other property that can represent the Article
     }
 }
