@@ -44,6 +44,8 @@ class ArticleController extends AbstractController
         ]);
     }
 
+
+
     #[Route('/article/{id}', name: 'article_show')]
     public function show(Article $article, Request $request, EntityManagerInterface $em): HttpResponse
     {

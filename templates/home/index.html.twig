@@ -20,16 +20,17 @@
         <nav class="mb-4">
             <ul class="nav nav-tabs justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Rapport Finit</a>
+                    <a class="nav-link {{ status == 'publié' ? 'active' : '' }}" href="{{ path('app_home', {'status': 'publié'}) }}">Rapport Finit</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Rapport Brouillon</a>
+                    <a class="nav-link {{ status == 'brouillon' ? 'active' : '' }}" href="{{ path('app_home', {'status': 'brouillon'}) }}">Rapport Brouillon</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Rapport avec Réponse</a>
+                    <a class="nav-link {{ status == 'published_with_response' ? 'active' : '' }}" href="{{ path('app_home', {'status': 'published_with_response'}) }}">Rapport avec Réponse</a>
                 </li>
             </ul>
         </nav>
+
 
         <section class="mb-5">
             <h2 class="text-center mb-4">Rapport récent</h2>
