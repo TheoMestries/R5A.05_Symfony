@@ -28,9 +28,17 @@
                         </div>
 
                         <div class="form-group">
+                            {{ form_label(registrationForm.plainPasswordConfirmation , 'Password confirmation', {'label_attr': {'class': 'form-control-label'}}) }}
+                            {{ form_widget(registrationForm.plainPasswordConfirmation , {'attr': {'class': 'form-control'}}) }}
+
+                        </div>
+
+                        <div class="form-group">
                             {{ form_widget(registrationForm.agreeTerms) }}
                             {{ form_label(registrationForm.agreeTerms, 'I agree to the terms of service', {'label_attr': {'class': 'form-check-label'}}) }}
                         </div>
+
+
 
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-dark">S'inscrire</button>

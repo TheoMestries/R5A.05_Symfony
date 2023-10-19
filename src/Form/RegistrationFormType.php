@@ -43,6 +43,17 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+
+            ->add('plainPasswordConfirmation', PasswordType::class, [
+                'mapped' => false,
+                'attr' => ['autocomplete' => 'new-password'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please confirm your password',
+                    ]),
+                ],
+            ])
+
         ;
     }
 

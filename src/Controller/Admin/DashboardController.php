@@ -5,17 +5,18 @@ namespace App\Controller\Admin;
 use App\Controller\RegistrationController;
 use App\Entity\Article;
 use App\Entity\User;
+use App\Entity\Response;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response as HttpResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
     #[Route('/admin', name: 'admin')]
-    public function index(): Response
+    public function index(): HttpResponse
     {
         //return parent::index();
 
@@ -47,6 +48,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('User', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('Articles', 'fas fa-newspaper', Article::class);
+        yield MenuItem::linkToCrud('Reponses', 'fas fa-comments', Response::class);
+
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
