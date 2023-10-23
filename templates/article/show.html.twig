@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container mt-5">
-        <h2 class="text-center">SCP-{{ article.scpNumber }}</h2>
+        <h2 class="text-center">{{ article.scpNumber }}</h2>
         <hr>
         <h4>{{ article.title }}</h4>
         <small class="text-muted">Publié par {{ article.author.firstName }} {{ article.author.lastname }} le {{ article.publicationDate|date('d/m/Y à H:i') }}</small>

@@ -21,18 +21,20 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    public function findPublishedWithAtLeastOneResponse()
+    public function findPublishedWithAtLeastOneResponse($queryBuilder)
     {
-        return $this->createQueryBuilder('a')
+        $queryBuilder
             ->leftJoin('App\Entity\Response', 'r', 'WITH', 'r.article = a.id') // Utilisez la relation inverse correcte
             ->where('a.status = :status')
             ->andWhere('r.id IS NOT NULL') // Vérifiez que la réponse existe
             ->setParameter('status', 'publié')
             ->groupBy('a.id')
-            ->having('COUNT(r.id) > 0') // Assurez-vous qu'il y a au moins une réponse
             ->getQuery()
             ->getResult();
+
+        return $queryBuilder;
     }
+
 
 
 

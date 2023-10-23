@@ -78,4 +78,5 @@ class Response
 
         return $this;
     }
+
 }

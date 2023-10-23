@@ -7,6 +7,40 @@
         .card {
             width: 100%;
             margin-bottom: 20px;}
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+
+        .pagination .page-item .page-link {
+            color: #ddd;
+            background-color: #444;
+            border: 1px solid #555;
+            transition: all 0.3s;
+            margin: 0 2px;
+            border-radius: 4px;
+        }
+
+        .pagination .page-item.active .page-link {
+            color: #059669;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+
+        .page-item.active .page-link:hover {
+            background-color: #d4d9df;
+        }
+
+
+        .pagination .page-item .page-link:hover {
+            color: #059669;
+            background-color: #e9ecef;
+            border-color: #ced4da;
+        }
+
     </style>
 {% endblock %}
 
@@ -34,7 +68,7 @@
 
         <section class="mb-5">
             <h2 class="text-center mb-4">Rapport récent</h2>
-                {% for scp_report in scp_reports %}
+                {% for scp_report in pagination %}
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">{{ scp_report.title }}</h5>
@@ -45,6 +79,55 @@
                         </div>
                     </div>
                 {% endfor %}
+            <div class="pagination">
+                <ul class="pagination">
+                    {% if real_page_number > 1 %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ path('app_home', {'status': status, 'page': real_page_number - 1}) }}">&laquo;</a>
+                        </li>
+                    {% endif %}
+                    {% if page_number > 3 %}
+                        <li class="page-item{{ 1 == pagination.current ? ' active' : '' }}">
+                            <a class="page-link" href="{{ path('app_home', {'status': status, 'page': 1}) }}">1</a>
+                        </li>
+                        <li class="page-item disabled">
+                            <span class="page-link">...</span>
+                        </li>
+                    {% endif %}
+
+                    {% for page in page_number-2..page_max_number %}
+                            {% if page == real_page_number %}
+                                <li class="page-item{{ page == real_page_number ? ' active' : '' }}">
+                                    <span class="page-link">{{ page }}</span>
+                                </li>
+                            {% else %}
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ path('app_home', {'status': status, 'page': page}) }}">{{ page }}</a>
+                                </li>
+                            {% endif %}
+                    {% endfor %}
+
+
+                    {% if page_max_number < pagination.pageCount  %}
+                        <li class="page-item disabled">
+                            <span class="page-link">...</span>
+                        </li>
+                        <li class="page-item{{ pagination.pageCount == pagination.current ? ' active' : '' }}">
+                            <a class="page-link" href="{{ path('app_home', {'status': status, 'page': pagination.pageCount}) }}">{{ pagination.pageCount }}</a>
+                        </li>
+                    {% endif %}
+                    {% if real_page_number < pagination.pageCount %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ path('app_home', {'status': status, 'page': real_page_number + 1}) }}">&raquo;</a>
+                        </li>
+                    {% endif %}
+
+
+                </ul>
+            </div>
+
+
+
         </section>
 
 
