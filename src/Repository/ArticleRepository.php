@@ -24,9 +24,9 @@ class ArticleRepository extends ServiceEntityRepository
     public function findPublishedWithAtLeastOneResponse($queryBuilder)
     {
         $queryBuilder
-            ->leftJoin('App\Entity\Response', 'r', 'WITH', 'r.article = a.id') // Utilisez la relation inverse correcte
+            ->leftJoin('App\Entity\Response', 'r', 'WITH', 'r.article = a.id')
             ->where('a.status = :status')
-            ->andWhere('r.id IS NOT NULL') // Vérifiez que la réponse existe
+            ->andWhere('r.id IS NOT NULL')
             ->setParameter('status', 'publié')
             ->groupBy('a.id')
             ->getQuery()

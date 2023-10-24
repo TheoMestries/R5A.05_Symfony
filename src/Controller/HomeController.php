@@ -37,19 +37,18 @@ class HomeController extends AbstractController
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            2  // 2 articles per page
+            2
         );
 
         $pageNumber = $request->query->getInt('page', 1);
 
-        $realPageNumber = $pageNumber ;
+        $realPageNumber = $pageNumber;
 
-        if ($pageNumber <3) {
+        if ($pageNumber < 3) {
             $pageNumber = 3;
         }
 
-        $pageMaxNumber = $pageNumber + 2 ;
-
+        $pageMaxNumber = $pageNumber + 2;
 
 
         if ($pageMaxNumber > $pagination->getPageCount()) {

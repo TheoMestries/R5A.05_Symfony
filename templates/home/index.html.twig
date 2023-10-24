@@ -6,12 +6,23 @@
     <style>
         .card {
             width: 100%;
-            margin-bottom: 20px;}
+            margin-bottom: 20px;
+            background-color: #f4f1ed;
+        }
+
 
         .pagination {
             display: flex;
             justify-content: center;
             margin-top: 20px;
+        }
+
+        .font-weight-bold {
+            color: #710c04;
+        }
+
+        .nav-link {
+            color: #B90E0A;
         }
 
 
@@ -47,43 +58,49 @@
 {% block body %}
     <div class="container mt-5">
         <header class="text-center mb-5">
-            <h1 class="display-4">Fondation SCP</h1>
+            <h1 class="display-4 font-weight-bold">Fondation SCP</h1>
             <p class="lead">Sécuriser. Contenir. Protéger.</p>
         </header>
 
         <nav class="mb-4">
             <ul class="nav nav-tabs justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link {{ status == 'publié' ? 'active' : '' }}" href="{{ path('app_home', {'status': 'publié'}) }}">Rapport Finit</a>
+                    <a class="nav-link {{ status == 'publié' ? 'active' : '' }}"
+                       href="{{ path('app_home', {'status': 'publié'}) }}">Rapport Finit</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ status == 'brouillon' ? 'active' : '' }}" href="{{ path('app_home', {'status': 'brouillon'}) }}">Rapport Brouillon</a>
+                    <a class="nav-link {{ status == 'brouillon' ? 'active' : '' }}"
+                       href="{{ path('app_home', {'status': 'brouillon'}) }}">Rapport Brouillon</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ status == 'published_with_response' ? 'active' : '' }}" href="{{ path('app_home', {'status': 'published_with_response'}) }}">Rapport avec Réponse</a>
+                    <a class="nav-link {{ status == 'published_with_response' ? 'active' : '' }}"
+                       href="{{ path('app_home', {'status': 'published_with_response'}) }}">Rapport avec Réponse</a>
                 </li>
             </ul>
         </nav>
 
 
         <section class="mb-5">
-            <h2 class="text-center mb-4">Rapport récent</h2>
-                {% for scp_report in pagination %}
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ scp_report.title }}</h5>
-                            <small class="text-muted">Publié par {{ scp_report.author.firstName }} {{ scp_report.author.lastname }} le {{ scp_report.publicationDate|date('d/m/Y à H:i') }}</small>
-                            <p class="mt-2 card-text">{{ scp_report.scpNumber }}</p>
-                            <p class="card-text">{{ scp_report.content|slice(0, 150) }}...</p>
-                            <a href="{{ path('article_show', {'id': scp_report.id}) }}" class="stretched-link"></a>
-                        </div>
+            <h2 class="text-center mb-4 font-weight-bold">Rapport récent</h2>
+            {% for scp_report in pagination %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ scp_report.title }}</h5>
+                        <small class="text-muted">Publié
+                            par {{ scp_report.author.firstName }} {{ scp_report.author.lastname }}
+                            le {{ scp_report.publicationDate|date('d/m/Y à H:i') }}</small>
+                        <p class="mt-2 card-text">{{ scp_report.scpNumber }}</p>
+                        <p class="card-text">{{ scp_report.content|slice(0, 150) }}...</p>
+                        <a href="{{ path('article_show', {'id': scp_report.id}) }}" class="stretched-link"></a>
                     </div>
-                {% endfor %}
+                </div>
+            {% endfor %}
             <div class="pagination">
                 <ul class="pagination">
                     {% if real_page_number > 1 %}
                         <li class="page-item">
-                            <a class="page-link" href="{{ path('app_home', {'status': status, 'page': real_page_number - 1}) }}">&laquo;</a>
+                            <a class="page-link"
+                               href="{{ path('app_home', {'status': status, 'page': real_page_number - 1}) }}">&laquo;</a>
                         </li>
                     {% endif %}
                     {% if page_number > 3 %}
@@ -96,29 +113,32 @@
                     {% endif %}
 
                     {% for page in page_number-2..page_max_number %}
-                            {% if page == real_page_number %}
-                                <li class="page-item{{ page == real_page_number ? ' active' : '' }}">
-                                    <span class="page-link">{{ page }}</span>
-                                </li>
-                            {% else %}
-                                <li class="page-item">
-                                    <a class="page-link" href="{{ path('app_home', {'status': status, 'page': page}) }}">{{ page }}</a>
-                                </li>
-                            {% endif %}
+                        {% if page == real_page_number %}
+                            <li class="page-item{{ page == real_page_number ? ' active' : '' }}">
+                                <span class="page-link">{{ page }}</span>
+                            </li>
+                        {% else %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="{{ path('app_home', {'status': status, 'page': page}) }}">{{ page }}</a>
+                            </li>
+                        {% endif %}
                     {% endfor %}
 
 
-                    {% if page_max_number < pagination.pageCount  %}
+                    {% if page_max_number < pagination.pageCount %}
                         <li class="page-item disabled">
                             <span class="page-link">...</span>
                         </li>
                         <li class="page-item{{ pagination.pageCount == pagination.current ? ' active' : '' }}">
-                            <a class="page-link" href="{{ path('app_home', {'status': status, 'page': pagination.pageCount}) }}">{{ pagination.pageCount }}</a>
+                            <a class="page-link"
+                               href="{{ path('app_home', {'status': status, 'page': pagination.pageCount}) }}">{{ pagination.pageCount }}</a>
                         </li>
                     {% endif %}
                     {% if real_page_number < pagination.pageCount %}
                         <li class="page-item">
-                            <a class="page-link" href="{{ path('app_home', {'status': status, 'page': real_page_number + 1}) }}">&raquo;</a>
+                            <a class="page-link"
+                               href="{{ path('app_home', {'status': status, 'page': real_page_number + 1}) }}">&raquo;</a>
                         </li>
                     {% endif %}
 
@@ -127,9 +147,7 @@
             </div>
 
 
-
         </section>
-
 
 
         <footer class="text-center mt-5">

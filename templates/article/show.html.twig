@@ -7,14 +7,16 @@
         <h2 class="text-center">{{ article.scpNumber }}</h2>
         <hr>
         <h4>{{ article.title }}</h4>
-        <small class="text-muted">Publié par {{ article.author.firstName }} {{ article.author.lastname }} le {{ article.publicationDate|date('d/m/Y à H:i') }}</small>
+        <small class="text-muted">Publié par {{ article.author.firstName }} {{ article.author.lastname }}
+            le {{ article.publicationDate|date('d/m/Y à H:i') }}</small>
         <div class="mt-4">
             {{ article.content|raw|nl2br }}
         </div>
         {% if app.user == article.author %}
             <div class="d-flex justify-content-end">
                 <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-primary mr-2">Modifier</a>
-                <form method="post" action="{{ path('article_delete', {'id': article.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet article? Cette action est irréversible.');">
+                <form method="post" action="{{ path('article_delete', {'id': article.id}) }}"
+                      onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet article? Cette action est irréversible.');">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
                     <button class="btn btn-danger">Supprimer l'article</button>
                 </form>
@@ -25,20 +27,20 @@
 
     <div class="container mt-5 mb-4">
         {% if is_granted('ROLE_SUPERVISEUR') %}
-        <h4>Ajouter une réponse</h4>
-        <div class="card">
-            <div class="card-body">
-                {{ form_start(form) }}
-                <div class="form-group">
-                    {{ form_label(form.content, 'Votre réponse') }}
-                    {{ form_widget(form.content, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre réponse ici...'}}) }}
-                    {{ form_errors(form.content) }}
+            <h4>Ajouter une réponse</h4>
+            <div class="card">
+                <div class="card-body">
+                    {{ form_start(form) }}
+                    <div class="form-group">
+                        {{ form_label(form.content, 'Votre réponse') }}
+                        {{ form_widget(form.content, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre réponse ici...'}}) }}
+                        {{ form_errors(form.content) }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Répondre</button>
+                    {{ form_end(form) }}
                 </div>
-                <button type="submit" class="btn btn-primary">Répondre</button>
-                {{ form_end(form) }}
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
 
         <h4 class="mt-5">Réponses</h4>
         {% for response in responses %}
@@ -49,10 +51,15 @@
                     </div>
                 </div>
                 <div class="card-footer text-muted">
-                    Publié par {{ response.author.firstName }} {{ response.author.lastname }} le {{ response.publicationDate|date('d/m/Y à H:i') }}
+                    Publié par {{ response.author.firstName }} {{ response.author.lastname }}
+                    le {{ response.publicationDate|date('d/m/Y à H:i') }}
                     {% if app.user == response.author %}
-                        <button class="btn btn-sm btn-secondary edit-response-btn" data-response-id="{{ response.id }}">Edit</button>
-                        <button class="btn btn-danger btn-sm float-right delete-response-btn" data-response-id="{{ response.id }}">Supprimer</button>
+                        <button class="btn btn-sm btn-secondary edit-response-btn" data-response-id="{{ response.id }}">
+                            Edit
+                        </button>
+                        <button class="btn btn-danger btn-sm float-right delete-response-btn"
+                                data-response-id="{{ response.id }}">Supprimer
+                        </button>
                     {% endif %}
                 </div>
             </div>

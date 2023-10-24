@@ -16,12 +16,8 @@ use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 class ArticleController extends AbstractController
 {
-    /**
-     * @Route("/create-article", name="create_article")
-     * @throws \Exception
-     */
     #[Route('/create', name: 'create_article')]
-    public function create(Request $request,  Security $security, EntityManagerInterface $entityManager)
+    public function create(Request $request, Security $security, EntityManagerInterface $entityManager)
     {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
@@ -45,7 +41,6 @@ class ArticleController extends AbstractController
     }
 
 
-
     #[Route('/article/{id}', name: 'article_show')]
     public function show(Article $article, Request $request, EntityManagerInterface $em): HttpResponse
     {
@@ -59,7 +54,6 @@ class ArticleController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // Vérification du rôle de l'utilisateur
             if (!$this->isGranted('ROLE_SUPERVISEUR')) {
                 throw $this->createAccessDeniedException('Vous n\'avez pas la permission d\'ajouter une réponse.');
             }
@@ -92,7 +86,7 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();  // Utilisez $entityManager ici
+            $entityManager->flush();
 
             return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
         }
@@ -110,7 +104,7 @@ class ArticleController extends AbstractController
             throw $this->createAccessDeniedException('Vous n\'êtes pas l\'auteur de cet article.');
         }
 
-        if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $article->getId(), $request->request->get('_token'))) {
             $entityManager->remove($article);
             $entityManager->flush();
             $this->addFlash('success', 'Article supprimé avec succès!');
@@ -149,11 +143,6 @@ class ArticleController extends AbstractController
 
         return new JsonResponse(['message' => 'Réponse supprimée avec succès!']);
     }
-
-
-
-
-
 
 
 }

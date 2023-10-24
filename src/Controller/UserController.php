@@ -32,7 +32,7 @@ class UserController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Profil mis à jour avec succès!');
-            return $this->redirectToRoute('app_user_show' , ['id' => $user->getId()]);
+            return $this->redirectToRoute('app_user_show', ['id' => $user->getId()]);
         }
 
         return $this->render('user/show.html.twig', [

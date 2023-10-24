@@ -107,12 +107,13 @@ class Article
 
     public function __toString(): string
     {
-        return $this->title;  // or any other property that can represent the Article
+        return $this->title;
     }
 
     private $responses;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->responses = new ArrayCollection();
     }
 
