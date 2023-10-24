@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Form\UserProfileType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,10 +21,23 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/{id}', name: 'app_user_show')]
-    public function show(): Response
+    public function editProfile(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        $form = $this->createForm(UserProfileType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Profil mis à jour avec succès!');
+            return $this->redirectToRoute('app_user_show' , ['id' => $user->getId()]);
+        }
+
         return $this->render('user/show.html.twig', [
-            'controller_name' => 'UserController',
+            'form' => $form->createView(),
         ]);
     }
+
 }

@@ -28,6 +28,7 @@ class HomeController extends AbstractController
                 $articleRepository->findPublishedWithAtLeastOneResponse($queryBuilder);
                 break;
             default:
+                // No additional conditions for "all"
                 break;
         }
 
@@ -36,7 +37,7 @@ class HomeController extends AbstractController
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            2
+            2  // 2 articles per page
         );
 
         $pageNumber = $request->query->getInt('page', 1);
