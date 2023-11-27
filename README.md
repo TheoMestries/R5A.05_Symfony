@@ -1,48 +1,26 @@
-# Symfony Docker
+# Projet de Gestion des Articles et Réponses
 
-A [Docker](https://www.docker.com/)-based installer and runtime for the [Symfony](https://symfony.com) web framework,
-with [FrankenPHP](https://frankenphp.dev) and [Caddy](https://caddyserver.com/) inside!
+## But du Projet
 
-![CI](https://github.com/dunglas/symfony-docker/workflows/CI/badge.svg)
+Ce projet a pour objectif de développer une application web complète permettant la gestion d'articles et de réponses associées. Il vise à simuler un environnement professionnel réel où les compétences en développement web sont mises en pratique pour créer, gérer et maintenir une application dynamique et interactive.
 
-## Getting Started
+## Compétences Développées
 
-1. If not already done, [install Docker Compose](https://docs.docker.com/compose/install/) (v2.10+)
-2. Run `docker compose build --no-cache` to build fresh images
-3. Run `docker compose up --pull --wait` to start the project
-4. Open `https://localhost` in your favorite web browser and [accept the auto-generated TLS certificate](https://stackoverflow.com/a/15076602/1352334)
-5. Run `docker compose down --remove-orphans` to stop the Docker containers.
+En travaillant sur ce projet, les compétences suivantes, listées dans le RNCP pour le titre "Développeur Web et Web Mobile", sont développées :
 
-## Features
+1. **Maquetter une application** : La conception de l'interface utilisateur et l'expérience utilisateur (UI/UX) pour la gestion des articles et des réponses.
 
-* Production, development and CI ready
-* Just 1 service by default
-* Blazing-fast performance thanks to [the worker mode of FrankenPHP](https://github.com/dunglas/frankenphp/blob/main/docs/worker.md) (automatically enabled in prod mode)
-* [Installation of extra Docker Compose services](docs/extra-services.md) with Symfony Flex
-* Automatic HTTPS (in dev and prod)
-* HTTP/3 and [Early Hints](https://symfony.com/blog/new-in-symfony-6-3-early-hints) support
-* Real-time messaging thanks to a built-in [Mercure hub](https://symfony.com/doc/current/mercure.html)
-* [Vulcain](https://vulcain.rocks) support
-* Native [XDebug](docs/xdebug.md) integration
-* Super-readable configuration
+2. **Réaliser une interface utilisateur web statique et adaptable** : Utilisation de HTML, CSS et frameworks comme Bootstrap pour créer des interfaces réactives.
 
-**Enjoy!**
+3. **Développer une interface utilisateur web dynamique** : Implémentation de fonctionnalités interactives en utilisant JavaScript et jQuery.
 
-## Docs
+4. **Créer une base de données** : Conception et gestion d'une base de données avec Doctrine pour stocker et gérer les données des articles et des réponses.
 
-1. [Build options](docs/build.md)
-2. [Using Symfony Docker with an existing project](docs/existing-project.md)
-3. [Support for extra services](docs/extra-services.md)
-4. [Deploying in production](docs/production.md)
-5. [Debugging with Xdebug](docs/xdebug.md)
-6. [TLS Certificates](docs/tls.md)
-7. [Using a Makefile](docs/makefile.md)
-8. [Troubleshooting](docs/troubleshooting.md)
+5. **Développer des composants d’accès aux données** : Mise en œuvre de l'accès et de la manipulation des données avec PHP et Symfony.
 
-## License
+6. **Développer la partie back-end d’une application web ou web mobile** : Construction de toute la logique côté serveur, y compris la gestion des utilisateurs, des rôles, et des interactions avec la base de données.
 
-Symfony Docker is available under the MIT License.
+7. **Elaborer et mettre en œuvre des composants dans une application de gestion de contenu ou e-commerce** : Bien que le projet ne soit pas directement lié à un CMS ou une plateforme e-commerce, les compétences en matière de gestion de contenu sont largement exploitées.
 
-## Credits
+Ce projet contribue également au développement de compétences transversales telles que la résolution de problèmes, la pensée critique, et la gestion de projet, essentielles dans le domaine du développement web et web mobile.
 
-Created by [Kévin Dunglas](https://dunglas.dev), co-maintained by [Maxime Helias](https://twitter.com/maxhelias) and sponsored by [Les-Tilleuls.coop](https://les-tilleuls.coop).
