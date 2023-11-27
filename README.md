@@ -4,23 +4,29 @@
 
 Ce projet a pour objectif de développer une application web complète permettant la gestion d'articles et de réponses associées. Il vise à simuler un environnement professionnel réel où les compétences en développement web sont mises en pratique pour créer, gérer et maintenir une application dynamique et interactive.
 
-## Compétences Développées
+### Développement d'applications web:
+- **Utilisation de Symfony et Doctrine** : Création d'une application web robuste, démontrant une maîtrise du développement backend et des interactions avec la base de données.
+- **Gestion des formulaires et requêtes utilisateur** : Mise en œuvre de formulaires complexes et gestion des interactions utilisateur, illustrant une compréhension approfondie du traitement des données côté serveur.
 
-En travaillant sur ce projet, les compétences suivantes, listées dans le RNCP pour le titre "Développeur Web et Web Mobile", sont développées :
+### Mise en œuvre de bases de données:
+- **Doctrine ORM** : Utilisation avancée de Doctrine pour la modélisation, la gestion et l'interaction avec la base de données, démontrant des compétences en conception et manipulation de données.
 
-1. **Maquetter une application** : La conception de l'interface utilisateur et l'expérience utilisateur (UI/UX) pour la gestion des articles et des réponses.
+### Développement de composants d'interface:
+- **Twig et JavaScript** : Création d'interfaces utilisateur dynamiques avec Twig et amélioration de l'interactivité client-side via JavaScript et jQuery, illustrant des compétences en développement frontend.
 
-2. **Réaliser une interface utilisateur web statique et adaptable** : Utilisation de HTML, CSS et frameworks comme Bootstrap pour créer des interfaces réactives.
+### Test et déploiement d'applications:
+- **Tests fonctionnels et unitaires** : Mise en place de tests pour assurer la fiabilité et la performance de l'application, démontrant une compréhension des principes de test et de qualité logicielle.
+- **Déploiement et maintenance** : Familiarité avec les processus de déploiement et de maintenance d'une application web, soulignant une compétence en gestion de l'environnement de production.
 
-3. **Développer une interface utilisateur web dynamique** : Implémentation de fonctionnalités interactives en utilisant JavaScript et jQuery.
+### Gestion de projet et travail en équipe:
+- **Organisation et structuration du code** : Code organisé et structuré méthodiquement, reflétant une approche professionnelle essentielle pour le travail en équipe et la gestion de projet.
 
-4. **Créer une base de données** : Conception et gestion d'une base de données avec Doctrine pour stocker et gérer les données des articles et des réponses.
+### Veille technologique et adaptation aux évolutions:
+- **Utilisation de Symfony 5** : Emploi d'un framework moderne et populaire, indiquant une veille technologique active et une adaptation aux évolutions du développement web.
 
-5. **Développer des composants d’accès aux données** : Mise en œuvre de l'accès et de la manipulation des données avec PHP et Symfony.
+### Communication et documentation:
+- **Documentation technique et utilisateur** : Rédaction de documents explicatifs pour l'utilisation et la maintenance de l'application, soulignant l'importance accordée à la communication claire et efficace.
 
-6. **Développer la partie back-end d’une application web ou web mobile** : Construction de toute la logique côté serveur, y compris la gestion des utilisateurs, des rôles, et des interactions avec la base de données.
-
-7. **Elaborer et mettre en œuvre des composants dans une application de gestion de contenu ou e-commerce** : Bien que le projet ne soit pas directement lié à un CMS ou une plateforme e-commerce, les compétences en matière de gestion de contenu sont largement exploitées.
-
-Ce projet contribue également au développement de compétences transversales telles que la résolution de problèmes, la pensée critique, et la gestion de projet, essentielles dans le domaine du développement web et web mobile.
+### Respect des normes et des réglementations:
+- **Sécurité et conformité** : Développement conforme aux normes de sécurité web, notamment en matière de gestion des données utilisateur, d'authentification et de protection contre les vulnérabilités web courantes.
 
